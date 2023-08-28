@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../assset/item/css/styles.css">
+    <link rel="stylesheet" href="../assset/base.css">
+    <link rel="stylesheet" href="../assset/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/css/all.min.css">
+</head>
+<body>
+
+  
+    <div class="header">
+		<div class="grid">
+			<nav class="header-navbar">
+				<ul class=" navbar-list">
+					<li class="navbar-item navbar-item-one">Connect with us
+						<a href="https://www.facebook.com/profile.php?id=100010078389299" class="facebook-link">
+							<img src="../assset/icon/facebook.svg" class="image">
+						</a>
+						<a href="https://github.com/Mhoanganh207" class="facebook-link">
+							<img src="../assset/icon/square-github.svg" class="image">
+						</a>
+					</li>
+				</ul>
+
+				<ul class="navbar-list">
+					<li class="navbar-item">
+						<a href="" class="navbar-link">Help
+							<img src="../assset/icon/question-solid.svg" class="image">
+						</a>
+					</li>
+					<li class="navbar-item">
+						<a href="" class="navbar-link">Notification
+							<img src="../assset/icon/bell-regular.svg" class="image">
+						</a>
+					</li>
+					</li>
+
+					<li class="navbar-item navbar-separate" id="account-item">
+						<a href="/signup" class="navbar-link">Sign up</a>
+
+					</li>
+					<li class="navbar-item" id="account-item1">
+						<a href="/signin" class="navbar-link">Sign in</a>
+					</li>
+
+					<li class="navbar-item hide" id="account-item2">
+						<a href="/sublogout" class="navbar-link">Log out</a>
+					</li>
+
+				</ul>
+			</nav>
+			<div class="top-container">
+				<!--Logo-->
+				<div class="logo">
+
+					<a href="/index" class="logo-link">
+						<img class="logo-img logo-image"
+							src="../assset/img/manga-store-low-resolution-logo-color-on-transparent-background (3).png"
+							alt="">
+					</a>
+
+				</div>
+				<!--Search Bar-->
+				<div class=" header-search">
+
+					<input type="text" class="search-bar" placeholder="Search :v">
+					<button class="search-button">
+						<img src="../assset/icon/magnifying-glass-solid.svg" class="image1 search-icon ">
+					</button>
+
+				</div>
+				<!--Cart-->
+				<div class="header-cart">
+					<img src="../assset/icon/cart-shopping-solid.svg" class="image2 filter-white cart-icon">
+					<!-- cartlist-empty -->
+					<div class="cartlist cartlist-empty">
+						<img src="../assset/img/shopping-cart (1).png" alt="" class="emptycart-icon">
+						<span class="cartlist-empty-msg">
+							There is nothing here
+						</span>
+
+					</div>
+				</div>
+				<div class="header-user">
+				<img src="../assset/icon/user-solid.svg" class="image2 filter-white">
+				</div>
+
+			</div>
+		</div>
+        <section class="py5">
+            <div class=" container px-4 px-lg-5 my-5">
+                <div class=" item-container row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="item-img card-img-top mb-5 mb-md-0" th:src=${image} alt="..." /></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder" th:text=${name}></h1>
+                        <div class = "product-info-top">
+                          <h2 class = "sm-title" th:text=${category}></h2>
+                          <h2 class = "sm-title" th:text="'By '+ ${author}"></h2>
+                         
+                      </div>
+                        <div class="price-tag fs-5 mb-5">
+                            <span class="text-decoration-line-through" th:text="'$'+${preprice}">
+								
+							</span>
+                            <span style="font-size: 17px;" th:text="'$'+${price}"></span>
+                        </div>
+                        <p style="padding-bottom: 15px; font-size: 15px;" class="lead" th:text=${description}></p>
+                        <div class="d-flex">
+                          
+                            <button class="cart-btn btn flex-shrink-0" type="button">
+                                <i class="bi-cart-fill me-1"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+   
+
+    
+</body>
+
+<script>
+	
+	var check = "[[${signedin}]]";
+	if(check){
+	
+	var result = document.getElementById("account-item");
+	result.classList.add("hide");
+	var result1 = document.getElementById("account-item1");
+	result1.classList.add("hide");
+	var result2 = document.getElementById("account-item2");
+	result2.classList.remove("hide");
+	result2.classList.add("show");
+	
+	}
+	
+	if(check==="0"){
+	
+	var result = document.getElementById("account-item");
+	result.classList.remove("hide")
+	var result1 = document.getElementById("account-item1");
+	result1.classList.remove("hide");
+	var result2 = document.getElementById("account-item2");
+	result2.classList.add("hide");
+	result2.classList.remove("show");
+    }
+	
+   
+</script>
+
+</html>

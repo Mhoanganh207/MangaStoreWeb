@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<link rel="stylesheet" href="./assset/base.css">
+	<link rel="stylesheet" href="./assset/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="./fontawesome-free-6.4.0-web/css/all.min.css">
+
+	<title>Manga Store</title>
+
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="grid">
+			<nav class="header-navbar">
+				<ul class=" navbar-list">
+					<li class="navbar-item navbar-item-one">Connect with us
+						<a href="https://www.facebook.com/profile.php?id=100010078389299" class="facebook-link">
+							<img src="./assset/icon/facebook.svg" class="image">
+						</a>
+						<a href="https://github.com/Mhoanganh207" class="facebook-link">
+							<img src="./assset/icon/square-github.svg" class="image">
+						</a>
+					</li>
+				</ul>
+
+				<ul class="navbar-list">
+					<li class="navbar-item">
+						<a href="" class="navbar-link">Help
+							<img src="./assset/icon/question-solid.svg" class="image">
+						</a>
+					</li>
+					<li class="navbar-item">
+						<a href="" class="navbar-link">Notification
+							<img src="./assset/icon/bell-regular.svg" class="image">
+						</a>
+					</li>
+					</li>
+
+					<li class="navbar-item navbar-separate" id="account-item">
+						<a href="/signup" class="navbar-link">Sign up</a>
+
+					</li>
+					<li class="navbar-item" id="account-item1">
+						<a href="/signin" class="navbar-link">Sign in</a>
+					</li>
+
+					<li class="navbar-item hide" id="account-item2">
+						<a href="/logout" class="navbar-link">Log out</a>
+					</li>
+
+				</ul>
+			</nav>
+			<div class="top-container">
+				<!--Logo-->
+				<div class="logo">
+
+					<a href="index" class="logo-link">
+						<img class="logo-img logo-image"
+							src="./assset/img/manga-store-low-resolution-logo-color-on-transparent-background (3).png"
+							alt="">
+					</a>
+
+				</div>
+				<!--Search Bar-->
+				<div class=" header-search">
+
+					<input type="text" class="search-bar" placeholder="Search :v">
+					<button class="search-button">
+						<img src="./assset/icon/magnifying-glass-solid.svg" class="image1 search-icon ">
+					</button>
+
+				</div>
+				<!--Cart-->
+				<div class="header-cart">
+					<img src="./assset/icon/cart-shopping-solid.svg" class="image2 filter-white cart-icon">
+					<!-- cartlist-empty -->
+					<div class="cartlist cartlist-empty">
+						<img src="./assset/img/shopping-cart (1).png" alt="" class="emptycart-icon">
+						<span class="cartlist-empty-msg">
+							There is nothing here
+						</span>
+
+					</div>
+				</div>
+				<div class="header-user">
+				<img src="./assset/icon/user-solid.svg" class="image2 filter-white">
+				</div>
+
+			</div>
+		</div>
+		<section class="container">
+			<div class="slider-wrapper">
+				<div class="slider">
+					<img id="slide-1" src="./assset/img/img1.jpg" alt="Manga" />
+					<img id="slide-2" src="./assset/img/img2.jpeg" alt="Manga" />
+					<img id="slide-3" src="./assset/img/img3.webp" alt="Manga" />
+					<img id="slide-4" src="./assset/img/img4.png" alt="Manga" />
+				</div>
+				<div class="slider-nav">
+					<a href="#slide-1"></a>
+					<a href="#slide-2"></a>
+					<a href="#slide-3"></a>
+					<a href="#slide-4"></a>
+				</div>
+			</div>
+		</section>
+		<div class="products">
+			<div class="product-container">
+
+
+				<div class="product-items">
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/1">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/197473689X.jpg"
+										alt="product image">
+								</a>
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+								</button>
+								<button type="button" class="btn-buy"> buy now
+									<span><i class="fas fa-shopping-cart"></i></span>
+								</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Shonen, Action</h2>
+								<h2 class="sm-title">By Hitsuji Gondaira</h2>
+
+							</div>
+							<a href="#" class="product-name">Mission Yozakura Family vol.6</a>
+							<p class="product-price">$ 8.00</p>
+							<p class="product-price">$ 6.00</p>
+						</div>
+
+						<div class="off-info">
+							<h2 class="sm-title">25% off</h2>
+						</div>
+					</div>
+
+					<!-- end of single product -->
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/2">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/1974738752.jpg"
+										alt="product image">
+								</a>
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+
+
+									<button type="button" class="btn-buy"> buy now
+										<span><i class="fas fa-shopping-cart"></i></span>
+									</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Seinen, Romance</h2>
+								<h2 class="sm-title">By Aka Akasaka</h2>
+
+							</div>
+							<a href="#" class="product-name">Kaguya-sama Love is war vol.26</a>
+							<p class="product-price">$ 10.00</p>
+							<p class="product-price">$ 9.00</p>
+						</div>
+					</div>
+					<!-- end of single product -->
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/3">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/1974738701.jpg"
+										alt="product image">
+								</a>
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+								</button>
+								<button type="button" class="btn-buy"> buy now
+									<span><i class="fas fa-shopping-cart"></i></span>
+								</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Shonen, Action</h2>
+								<h2 class="sm-title">By Oda Eiichiro</h2>
+
+							</div>
+							<a href="#" class="product-name">One piece vol.103</a>
+							<p class="product-price">$ 8.00</p>
+							<p class="product-price">$ 7.20</p>
+						</div>
+					</div>
+					<!-- end of single product -->
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/4">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/1974737446.jpg"
+										alt="product image">
+								</a>
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+								</button>
+								<button type="button" class="btn-buy"> buy now
+									<span><i class="fas fa-shopping-cart"></i></span>
+								</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Shonen, Comedy</h2>
+								<h2 class="sm-title">By Yukinobu Tatsu</h2>
+
+							</div>
+							<a href="#" class="product-name">Dandadan vol.4</a>
+							<p class="product-price">$ 10.00</p>
+							<p class="product-price">$ 7.50</p>
+						</div>
+
+						<div class="off-info">
+							<h2 class="sm-title">25% off</h2>
+						</div>
+					</div>
+					<!-- end of single product -->
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/5">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/1974724174.jpg"
+										alt="product image">
+								</a>
+
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+								</button>
+								<button type="button" class="btn-buy"> buy now
+									<span><i class="fas fa-shopping-cart"></i></span>
+								</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Shonen, Action</h2>
+								<h2 class="sm-title">By Hirohiko Araki</h2>
+
+							</div>
+							<a href="#" class="product-name">JoJo’s Bizarre Adventure: Part 5--Golden Wind, Vol. 9</a>
+							<p class="product-price">$ 18.00</p>
+							<p class="product-price">$ 16.33</p>
+						</div>
+					</div>
+					<!-- end of single product -->
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/6">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/1421596024.jpg"
+										alt="product image">
+								</a>
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+								</button>
+								<button type="button" class="btn-buy"> buy now
+									<span><i class="fas fa-shopping-cart"></i></span>
+								</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Shonen, Action,
+									Adventure</h2>
+								<h2 class="sm-title">By Tite Kubo</h2>
+
+							</div>
+							<a href="#" class="product-name">Bleach Vol.73</a>
+							<p class="product-price">$ 10.00</p>
+							<p class="product-price">$ 9.00</p>
+						</div>
+						<div class="off-info">
+							<h2 class="sm-title">Final Volume</h2>
+						</div>
+					</div>
+					<!-- end of single product -->
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/7">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/142150636X.jpg"
+										alt="product image">
+								</a>
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+								</button>
+								<button type="button" class="btn-buy"> buy now
+									<span><i class="fas fa-shopping-cart"></i></span>
+								</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Shonen, Action</h2>
+								<h2 class="sm-title">By Akira Toriyama</h2>
+
+							</div>
+							<a href="#" class="product-name">Dragon Ball Vol.26</a>
+							<p class="product-price">$ 9.00</p>
+							<p class="product-price">$ 8.00</p>
+						</div>
+					</div>
+					<!-- end of single product -->
+					<!-- single product -->
+					<div class="product">
+						<div class="product-content">
+							<div class="product-img">
+								<a href="item/8">
+									<img class="img-product"
+										src="https://dw9to29mmj727.cloudfront.net/products/1421582848.jpg"
+										alt="product image">
+								</a>
+							</div>
+							<div class="product-btns">
+								<button type="button" class="btn-cart"> add to cart
+									<span><i class="fas fa-plus"></i></span>
+								</button>
+								<button type="button" class="btn-buy"> buy now
+									<span><i class="fas fa-shopping-cart"></i></span>
+								</button>
+							</div>
+						</div>
+
+						<div class="product-info">
+							<div class="product-info-top">
+								<h2 class="sm-title">Shonen, Action</h2>
+								<h2 class="sm-title">By Masashi Kishimoto</h2>
+
+							</div>
+							<a href="#" class="product-name">Naruto Vol.72</a>
+							<p class="product-price">$ 10.00</p>
+							<p class="product-price">$ 6.50</p>
+						</div>
+
+						<div class="off-info">
+							<h2 class="sm-title">35% off</h2>
+						</div>
+					</div>
+					<!-- end of single product -->
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			THANK YOU
+		</div>
+	</div>
+	</div>
+
+
+	</div>
+</body>
+<script>
+
+	var check = "[[${signedin}]]";
+	if (check) {
+		var result = document.getElementById("account-item");
+		result.classList.add("hide");
+		var result1 = document.getElementById("account-item1");
+		result1.classList.add("hide");
+		var result2 = document.getElementById("account-item2");
+		result2.classList.remove("hide");
+		result2.classList.add("show");
+
+	}
+
+	if (check === "0") {
+
+		var result = document.getElementById("account-item");
+		result.classList.remove("hide")
+		var result1 = document.getElementById("account-item1");
+		result1.classList.remove("hide");
+		var result2 = document.getElementById("account-item2");
+		result2.classList.add("hide");
+		result2.classList.remove("show");
+	}
+
+
+
+
+
+</script>
+<script src="./assset/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+
+</html>
