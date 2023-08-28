@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../assset/base.css">
     <link rel="stylesheet" href="../assset/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../fontawesome-free-6.4.0-web/css/all.min.css">
+    
 </head>
 <body>
 
@@ -93,22 +93,20 @@
 
 			</div>
 		</div>
-        <section class="py5">
-            <div class=" container px-4 px-lg-5 my-5">
-                <div class=" item-container row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="item-img card-img-top mb-5 mb-md-0" th:src=${image} alt="..." /></div>
-                    <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder" th:text=${name}></h1>
+        <section class="item">
+                <div class="container-item">
+                <div class="item-part item-part-two">
+                    <img class="item-img" th:src=${image} alt="..." /> </div>
+                    <div class="item-part item-part-one">
+                        <div class="text-name" th:text=${name}></div>
                         <div class = "product-info-top">
                           <h2 class = "sm-title" th:text=${category}></h2>
                           <h2 class = "sm-title" th:text="'By '+ ${author}"></h2>
                          
                       </div>
                         <div class="price-tag fs-5 mb-5">
-                            <span class="text-decoration-line-through" th:text="'$'+${preprice}">
-								
-							</span>
-                            <span style="font-size: 17px;" th:text="'$'+${price}"></span>
+                            <p class="product-price" th:text="'$'+${preprice}"></p>
+							<p class="product-price" th:text="'$'+${price}"></p>
                         </div>
                         <p style="padding-bottom: 15px; font-size: 15px;" class="lead" th:text=${description}></p>
                         <div class="d-flex">
@@ -120,9 +118,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
-      </div>
+      
    
 
     
