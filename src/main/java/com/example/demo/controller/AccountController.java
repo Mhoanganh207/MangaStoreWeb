@@ -67,7 +67,7 @@ public class AccountController {
 				model.addAttribute("message", "Failed");
 				
 		
-				return new RedirectView("/signin");
+				return new RedirectView("/signup");
 		}
 		
 		userService.Save(user);

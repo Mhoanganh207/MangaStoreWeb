@@ -2,60 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
-
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="./fonts/material-icon/css/material-design-iconic-font.min.css">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="./account/css/style.css">
+    
+   
 </head>
+       <link rel="stylesheet" href="./assset/account.css">
 <body>
 
-    <div class="main">
-
-        <!-- Sign up form -->
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="post" class="register-form" id="register-form">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
-                            </div>
-                            <div class="form-group form-button">
-                                <input  type="submit" name="signup" id="signup" class="form-submit" value="Register" />
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="./account/images/40-404021_view-gon-hunter-x-hunter-png.png" alt="sing up image"></figure>
-                        <a href="/signin" class="signup-image-link">I am already member</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        
-
+    <div class="wrapper">
+    <div>
+    <h1> Sign Up</h1>
+        <form method="post" >
+            <input type="text" name="name" id="name" placeholder="User Name"/>
+            <input type="email" name="email" id="email" placeholder="Your Email"/>
+            <input type="password" name="pass" id="pass" placeholder="Password"/>
+            <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+            <button> Sign up</button>
+            <h3> Already a member ?
+                <a href="/signin"> Sign In</a>
+            </h3>
+        </form>
+    </div>
+    <div>
+		<img src="./account/images/40-404021_view-gon-hunter-x-hunter-png.png">
+    </div>
     </div>
     
+
+    <!-- JS -->
     <script th:inline = "javascript">
 		var flag = /*[[${alertflag}]]*/ "Mess";
 		
@@ -66,11 +39,6 @@
 
 		
 	</script>
-
-    <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="./assset/main.js"> </script> 
-    
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+   
+</body>
 </html>

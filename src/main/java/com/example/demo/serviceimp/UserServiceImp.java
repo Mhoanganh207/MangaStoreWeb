@@ -1,6 +1,9 @@
 package com.example.demo.serviceimp;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +35,6 @@ public class UserServiceImp implements UserService {
 		// TODO Auto-generated method stub
 	return (List<User>) userRepository.findAll();
 	}
+
 
 }
