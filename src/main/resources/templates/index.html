@@ -10,14 +10,12 @@
 	<link rel="stylesheet" href="./assset/base.css">
 	<link rel="stylesheet" href="./assset/main.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-	<link rel="stylesheet" href="./fontawesome-free-6.4.0-web/css/all.min.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<title>Manga Store</title>
 
 </head>
 
-<body>
-
+<body onload="AddCartList()">
 	<div class="header">
 		<div class="grid">
 			<nav class="header-navbar">
@@ -63,7 +61,7 @@
 				<!--Logo-->
 				<div class="logo">
 
-					<a href="index" class="logo-link">
+					<a href="" class="logo-link">
 						<img class="logo-img logo-image"
 							src="./assset/img/manga-store-low-resolution-logo-color-on-transparent-background (3).png"
 							alt="">
@@ -83,16 +81,20 @@
 				<div class="header-cart">
 					<img src="./assset/icon/cart-shopping-solid.svg" class="image2 filter-white cart-icon">
 					<!-- cartlist-empty -->
-					<div class="cartlist cartlist-empty">
+					<div class="cartlist cartlist-empty" id="cart">
 						<img src="./assset/img/shopping-cart (1).png" alt="" class="emptycart-icon">
 						<span class="cartlist-empty-msg">
 							There is nothing here
 						</span>
+						<div class="item-list" id="list-item">
+
+
+						</div>
 
 					</div>
 				</div>
 				<div class="header-user">
-				<img src="./assset/icon/user-solid.svg" class="image2 filter-white">
+					<img src="./assset/icon/user-solid.svg" class="image2 filter-white">
 				</div>
 
 			</div>
@@ -129,7 +131,7 @@
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'1');PostId('1');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
 								<button type="button" class="btn-buy"> buy now
@@ -166,7 +168,7 @@
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'2');PostId('2');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 
 
@@ -199,7 +201,7 @@
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'3');PostId('3');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
 								<button type="button" class="btn-buy"> buy now
@@ -231,7 +233,7 @@
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'4');PostId('4');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
 								<button type="button" class="btn-buy"> buy now
@@ -268,7 +270,7 @@
 
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'5'); PostId('5');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
 								<button type="button" class="btn-buy"> buy now
@@ -300,7 +302,8 @@
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'6'); PostId('6');">
+									add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
 								<button type="button" class="btn-buy"> buy now
@@ -336,7 +339,7 @@
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'7'); PostId('7');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
 								<button type="button" class="btn-buy"> buy now
@@ -368,7 +371,7 @@
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart"> add to cart
+								<button type="button" class="btn-cart" onclick="AddCart(event,'8'); PostId('8');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
 								<button type="button" class="btn-buy"> buy now
@@ -405,15 +408,16 @@
 
 	</div>
 </body>
+
 <script>
 
 	var check = "[[${signedin}]]";
+	var result = document.getElementById("account-item");
+	var result1 = document.getElementById("account-item1");
+	var result2 = document.getElementById("account-item2");
 	if (check) {
-		var result = document.getElementById("account-item");
 		result.classList.add("hide");
-		var result1 = document.getElementById("account-item1");
 		result1.classList.add("hide");
-		var result2 = document.getElementById("account-item2");
 		result2.classList.remove("hide");
 		result2.classList.add("show");
 
@@ -421,18 +425,13 @@
 
 	if (check === "0") {
 
-		var result = document.getElementById("account-item");
 		result.classList.remove("hide")
-		var result1 = document.getElementById("account-item1");
 		result1.classList.remove("hide");
-		var result2 = document.getElementById("account-item2");
 		result2.classList.add("hide");
 		result2.classList.remove("show");
 	}
-
-
-
-
+	
+	
 
 </script>
 <script src="./assset/main.js"></script>

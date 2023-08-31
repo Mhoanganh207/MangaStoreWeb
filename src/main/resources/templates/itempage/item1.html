@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="../assset/base.css">
     <link rel="stylesheet" href="../assset/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     
 </head>
-<body>
+<body onload="AddCartList()">
 
   
     <div class="header">
@@ -59,7 +60,7 @@
 				<!--Logo-->
 				<div class="logo">
 
-					<a href="/index" class="logo-link">
+					<a href="http://localhost:8080/" class="logo-link">
 						<img class="logo-img logo-image"
 							src="../assset/img/manga-store-low-resolution-logo-color-on-transparent-background (3).png"
 							alt="">
@@ -79,11 +80,14 @@
 				<div class="header-cart">
 					<img src="../assset/icon/cart-shopping-solid.svg" class="image2 filter-white cart-icon">
 					<!-- cartlist-empty -->
-					<div class="cartlist cartlist-empty">
+					<div class="cartlist cartlist-empty" id="cart">
 						<img src="../assset/img/shopping-cart (1).png" alt="" class="emptycart-icon">
 						<span class="cartlist-empty-msg">
 							There is nothing here
 						</span>
+						<div class="item-list" id="list-item">
+							
+						</div>
 
 					</div>
 				</div>
@@ -111,7 +115,7 @@
                         <p style="padding-bottom: 15px; font-size: 15px;" class="lead" th:text=${description}></p>
                         <div class="d-flex">
                           
-                            <button class="cart-btn btn flex-shrink-0" type="button">
+                            <button class="cart-btn btn flex-shrink-0" type="button" th:onclick="addcart()">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
                             </button>
@@ -128,30 +132,46 @@
 <script>
 	
 	var check = "[[${signedin}]]";
-	if(check){
-	
 	var result = document.getElementById("account-item");
-	result.classList.add("hide");
 	var result1 = document.getElementById("account-item1");
-	result1.classList.add("hide");
 	var result2 = document.getElementById("account-item2");
-	result2.classList.remove("hide");
-	result2.classList.add("show");
-	
+	if (check) {
+		result.classList.add("hide");
+		result1.classList.add("hide");
+		result2.classList.remove("hide");
+		result2.classList.add("show");
+
+	}
+
+	if (check === "0") {
+
+		result.classList.remove("hide")
+		result1.classList.remove("hide");
+		result2.classList.add("hide");
+		result2.classList.remove("show");
 	}
 	
-	if(check==="0"){
+	var cartcheck = "[[${cartcheck}]]";
 	
-	var result = document.getElementById("account-item");
-	result.classList.remove("hide")
-	var result1 = document.getElementById("account-item1");
-	result1.classList.remove("hide");
-	var result2 = document.getElementById("account-item2");
-	result2.classList.add("hide");
-	result2.classList.remove("show");
-    }
+	if(cartcheck){
+		var result = document.getElementById("cart");
+		result.classList.remove("cartlist-empty");
+	}
+	
+	var id = '[[${id}]]';
+    
+    function addcart(){
+		AddCart(event,id);
+		PostId(id);
+		
+		
+		
+	}
+    
 	
    
 </script>
+<script src="../assset/main.js"></script>
+
 
 </html>

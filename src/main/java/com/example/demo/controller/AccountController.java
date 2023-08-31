@@ -74,7 +74,7 @@ public class AccountController {
 		
 		redirectAttributes.addFlashAttribute("signedin", "1");
     	
-    	return new RedirectView("/index");
+    	return new RedirectView("");
 		
 	}
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
@@ -96,7 +96,7 @@ public class AccountController {
         	
         	redirectAttributes.addFlashAttribute("signedin", "1");
         	
-        	return new RedirectView("/index");
+        	return new RedirectView("");
         }
         flag=1;
 		model.addAttribute("alertflag", flag);
@@ -111,7 +111,7 @@ public class AccountController {
 		redirectAttributes.addFlashAttribute("signedin", "0");
 		flag=0;
 		
-		return new RedirectView("/index");
+		return new RedirectView("");
 		
 		
 		

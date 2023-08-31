@@ -31,6 +31,7 @@ public class BookController {
 	public String testpage(Model model, @PathVariable String id) {
 		Optional<Book> bookopt = bookRepository.findById(Integer.parseInt(id));
 		Book book = bookopt.get();
+		model.addAttribute("id", book.getId());
 		model.addAttribute("name", book.getName());
 		model.addAttribute("category", book.getCategory());
 		model.addAttribute("author",book.getAuthor());
