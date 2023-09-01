@@ -22,6 +22,12 @@ public class OrderService {
 		this.orderList.add(id);
 	}
 	
-	
+	public void Delete(String id) {
+		orderList.set(Integer.parseInt(id), -1);
+		
+	}
+	public void Clear() {
+		this.orderList.clear();
+	}
 
 }

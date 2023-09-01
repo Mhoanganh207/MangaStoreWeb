@@ -42,4 +42,5 @@ public class BookController {
 		model.addAttribute("image", book.getImageURL());
 		return "itempage/item1";
 	}
+	
 }

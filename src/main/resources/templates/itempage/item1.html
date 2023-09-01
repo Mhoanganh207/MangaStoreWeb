@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../assset/item/css/styles.css">
-    <link rel="stylesheet" href="../assset/base.css">
-    <link rel="stylesheet" href="../assset/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="../assset/item/css/styles.css">
+	<link rel="stylesheet" href="../assset/base.css">
+	<link rel="stylesheet" href="../assset/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 </head>
+
 <body onload="AddCartList()">
 
-  
-    <div class="header">
+
+	<div class="header">
 		<div class="grid">
 			<nav class="header-navbar">
 				<ul class=" navbar-list">
-					<li class="navbar-item navbar-item-one">Connect with us
+					<li class="navbar-item navbar-item-one">Connect with me
 						<a href="https://www.facebook.com/profile.php?id=100010078389299" class="facebook-link">
 							<img src="../assset/icon/facebook.svg" class="image">
 						</a>
@@ -78,7 +80,9 @@
 				</div>
 				<!--Cart-->
 				<div class="header-cart">
+					<a href="/payment">
 					<img src="../assset/icon/cart-shopping-solid.svg" class="image2 filter-white cart-icon">
+					</a>
 					<!-- cartlist-empty -->
 					<div class="cartlist cartlist-empty" id="cart">
 						<img src="../assset/img/shopping-cart (1).png" alt="" class="emptycart-icon">
@@ -86,51 +90,52 @@
 							There is nothing here
 						</span>
 						<div class="item-list" id="list-item">
-							
+
 						</div>
 
 					</div>
 				</div>
 				<div class="header-user">
-				<img src="../assset/icon/user-solid.svg" class="image2 filter-white">
+					<img src="../assset/icon/user-solid.svg" class="image2 filter-white">
 				</div>
 
 			</div>
 		</div>
-        <section class="item">
-                <div class="container-item">
-                <div class="item-part item-part-two">
-                    <img class="item-img" th:src=${image} alt="..." /> </div>
-                    <div class="item-part item-part-one">
-                        <div class="text-name" th:text=${name}></div>
-                        <div class = "product-info-top">
-                          <h2 class = "sm-title" th:text=${category}></h2>
-                          <h2 class = "sm-title" th:text="'By '+ ${author}"></h2>
-                         
-                      </div>
-                        <div class="price-tag fs-5 mb-5">
-                            <p class="product-price" th:text="'$'+${preprice}"></p>
-							<p class="product-price" th:text="'$'+${price}"></p>
-                        </div>
-                        <p style="padding-bottom: 15px; font-size: 15px;" class="lead" th:text=${description}></p>
-                        <div class="d-flex">
-                          
-                            <button class="cart-btn btn flex-shrink-0" type="button" th:onclick="addcart()">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-        </section>
-      
-   
+		<section class="item">
+			<div class="container-item">
+				<div class="item-part item-part-two">
+					<img class="item-img" th:src=${image} alt="..." />
+				</div>
+				<div class="item-part item-part-one">
+					<div class="text-name" th:text=${name}></div>
+					<div class="product-info-top">
+						<h2 class="sm-title" th:text=${category}></h2>
+						<h2 class="sm-title" th:text="'By '+ ${author}"></h2>
 
-    
+					</div>
+					<div class="price-tag fs-5 mb-5">
+						<p class="product-price" th:text="'$'+${preprice}"></p>
+						<p class="product-price" th:text="'$'+${price}"></p>
+					</div>
+					<p style="padding-bottom: 15px; font-size: 15px;" class="lead" th:text=${description}></p>
+					<div class="d-flex">
+
+						<button class="cart-btn btn flex-shrink-0" type="button" th:onclick="addcart()">
+							<i class="bi-cart-fill me-1"></i>
+							Add to cart
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
 </body>
 
 <script>
-	
+
 	var check = "[[${signedin}]]";
 	var result = document.getElementById("account-item");
 	var result1 = document.getElementById("account-item1");
@@ -150,26 +155,26 @@
 		result2.classList.add("hide");
 		result2.classList.remove("show");
 	}
-	
+
 	var cartcheck = "[[${cartcheck}]]";
-	
-	if(cartcheck){
+
+	if (cartcheck) {
 		var result = document.getElementById("cart");
 		result.classList.remove("cartlist-empty");
 	}
-	
+
 	var id = '[[${id}]]';
-    
-    function addcart(){
-		AddCart(event,id);
+
+	function addcart() {
+		AddCart(event, id);
 		PostId(id);
-		
-		
-		
+
+
+
 	}
-    
-	
-   
+
+
+
 </script>
 <script src="../assset/main.js"></script>
 

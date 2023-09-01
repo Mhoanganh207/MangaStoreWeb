@@ -28,6 +28,8 @@ public class Order {
 	
 	@OneToMany(mappedBy = "order")
 	private Set<Book> book_list = new HashSet<Book>();
+	private String address;
+	private String phonenumber;
 	private long totalprice;
 
 }

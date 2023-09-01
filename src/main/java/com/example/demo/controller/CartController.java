@@ -43,19 +43,20 @@ public class CartController {
 	
 	@GetMapping("/booklist")
 	public ResponseEntity<List<Integer>> getBookbyID(){
-		
-		for (int i:orderService.getOrderList()) {
-			System.out.print(i+"");
-		}
-		System.out.println();
-		
 		return new ResponseEntity<List<Integer>>(orderService.getOrderList(), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/book/{id}")
 	public void DeleteId(@PathVariable String id) {
-		
+		orderService.Delete(id);
+		for(int i:orderService.getOrderList()) {
+			if(i != -1) {
+				return;
+			}
+		}
+		orderService.Clear();
 	}
+	
 	
 	
 	
