@@ -32,5 +32,18 @@ public class UserServiceImp implements UserService {
 	return (List<User>) userRepository.findAll();
 	}
 
+	@Override
+	public User getId(String username) {
+		// TODO Auto-generated method stub
+		for(User user : this.findAll()) {
+			if(username.equals(user.getName())) {
+				return user;
+			}
+		}
+		return new User();
+	}
+	
+	
+
 
 }

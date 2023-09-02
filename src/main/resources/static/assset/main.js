@@ -155,18 +155,16 @@ function AddCheckOutCart() {
 
 	$.ajax({
 		type: "Get",
-		url: "http://localhost:8080/booklist",
+		url: "http://localhost:8080/cartlist",
 		success: function(list) {
 			
 	if(Object.keys(list).length !==0){
+		  var totalprice =0 ;
 			for (let i = 0; i < Object.keys(list).length; i++) {
-				var bookurl = 'http://localhost:8080/book/' + list[i];
-				if (list[i] !== -1) {
-					$.ajax({
-						type: "Get",
-						url: bookurl,
-						success: function(data) {
-							var addhtml = '';
+				if (list[i].id !== -1) {
+					data=list[i];
+					totalprice+= parseFloat(data.price)
+					var addhtml = '';
 							addhtml +=
 								'<div id="' + i + '">' +
 								'<table class="order-table">' +
@@ -194,13 +192,13 @@ function AddCheckOutCart() {
 								+ '</div>';
 
 							$("#checkoutCart").prepend(addhtml);
-							
-
-						}
-					})
+					
 				}
 
 			}
+			console.log(totalprice);
+			document.getElementById("totalprice").textContent='$'+totalprice;
+			
 		}
 		}
 	})
@@ -219,7 +217,38 @@ function removeCheckOutCart(id) {
 	var parent = document.getElementById("checkoutCart");
 	var child = document.getElementById(id);
 	parent.removeChild(child);
+	
+  setTimeout( function(){
+	$.ajax({
+		type: "Get",
+		url: "http://localhost:8080/cartlist",
+		success: function(list) {
+			
+	if(Object.keys(list).length !==0){
+		  var totalprice =0 ;
+			for (let i = 0; i < Object.keys(list).length; i++) {
+				if (list[i].id !== -1) {
+					totalprice+= parseFloat(list[i].price);
+				}
+
+			}
+			console.log(totalprice);
+			document.getElementById("totalprice").textContent='$'+totalprice;
+			
+		}
+	else{
+		document.getElementById("totalprice").textContent='$'+0;
+	}
+	
+		}
+	})
+	}, 20
+	)
 
 
 
+}
+
+function checkout(){
+	alert("Thank You")
 }

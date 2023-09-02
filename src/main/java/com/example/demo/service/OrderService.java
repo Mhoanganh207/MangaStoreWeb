@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Book;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class OrderService {
 	
 	private List<Integer> orderList = new ArrayList<Integer>();
+	private List<Book> booklist = new ArrayList<Book>();
 	
 	
 	public void Add(int id) {
@@ -28,6 +31,7 @@ public class OrderService {
 	}
 	public void Clear() {
 		this.orderList.clear();
+		this.booklist.clear();
 	}
 
 }

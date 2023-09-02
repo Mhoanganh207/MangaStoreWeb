@@ -1,8 +1,7 @@
 package com.example.demo.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,9 +26,9 @@ public class Order {
 	private User user;
 	
 	@OneToMany(mappedBy = "order")
-	private Set<Book> book_list = new HashSet<Book>();
+	private List<Book> book_list = new ArrayList<Book>();
 	private String address;
 	private String phonenumber;
-	private long totalprice;
+	private double totalprice;
 
 }

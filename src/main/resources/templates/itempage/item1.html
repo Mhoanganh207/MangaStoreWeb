@@ -172,6 +172,17 @@
 
 
 	}
+	
+	function buynow() {
+		AddCart(event, id);
+		PostId(id);
+        
+        setTimeout(function(){
+			window.location.href="/payment";
+		})
+
+
+	}
 
 
 

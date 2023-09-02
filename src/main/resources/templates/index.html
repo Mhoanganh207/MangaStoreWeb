@@ -79,9 +79,13 @@
 				</div>
 				<!--Cart-->
 				<div class="header-cart">
-					<a href="/payment">
-					<img src="./assset/icon/cart-shopping-solid.svg" class="image2 filter-white cart-icon">
-					</a>
+			
+			<span class="cart-icon">
+				<a  href="/payment">
+					<img src="./assset/icon/cart-shopping-solid.svg" class="image2 filter-white">
+				</a>
+			</span>
+		
 					<!-- cartlist-empty -->
 					<div class="cartlist cartlist-empty" id="cart">
 						<img src="./assset/img/shopping-cart (1).png" alt="" class="emptycart-icon">
@@ -136,7 +140,7 @@
 								<button type="button" class="btn-cart" onclick="AddCart(event,'1');PostId('1');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy"> buy now
+								<button type="button" class="btn-buy" onclick="buynow('1')"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -174,7 +178,7 @@
 									<span><i class="fas fa-plus"></i></span>
 
 
-									<button type="button" class="btn-buy"> buy now
+									<button type="button" class="btn-buy" onclick="buynow('2')"> buy now
 										<span><i class="fas fa-shopping-cart"></i></span>
 									</button>
 							</div>
@@ -206,7 +210,7 @@
 								<button type="button" class="btn-cart" onclick="AddCart(event,'3');PostId('3');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy"> buy now
+								<button type="button" class="btn-buy" onclick="buynow('3')"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -238,7 +242,7 @@
 								<button type="button" class="btn-cart" onclick="AddCart(event,'4');PostId('4');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy"> buy now
+								<button type="button" class="btn-buy" onclick="buynow('4')"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -275,7 +279,7 @@
 								<button type="button" class="btn-cart" onclick="AddCart(event,'5'); PostId('5');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy"> buy now
+								<button type="button" class="btn-buy" onclick="buynow('5')"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -308,7 +312,7 @@
 									add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy"> buy now
+								<button type="button" class="btn-buy" onclick="buynow('6')"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -344,7 +348,7 @@
 								<button type="button" class="btn-cart" onclick="AddCart(event,'7'); PostId('7');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy"> buy now
+								<button type="button" class="btn-buy" onclick="buynow('7')"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -376,7 +380,7 @@
 								<button type="button" class="btn-cart" onclick="AddCart(event,'8'); PostId('8');"> add to cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy"> buy now
+								<button type="button" class="btn-buy" onclick="buynow('8')"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -431,6 +435,17 @@
 		result1.classList.remove("hide");
 		result2.classList.add("hide");
 		result2.classList.remove("show");
+	}
+	
+	function buynow(id) {
+		AddCart(event, id);
+		PostId(id);
+        
+        setTimeout(function(){
+			window.location.href="/payment";
+		},100)
+
+
 	}
 	
 	
