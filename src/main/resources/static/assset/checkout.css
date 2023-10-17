@@ -78,8 +78,20 @@ ul li:hover {
   width:50%;
 }
 .window {
-  height: 600px;
-  width: 1000px;
+  height: 70%;
+  width: 70%;
+  background:#fff;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+  box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+  border-radius:30px;
+  z-index:10;
+}
+.window1 {
+  height: 100%;
+  width: 100%;
   background:#fff;
   display:-webkit-box;
   display:-webkit-flex;
@@ -111,10 +123,9 @@ ul li:hover {
   right:0px;
   color:#4488dd;
 }
-.order-table td:first-of-type {
-  width:25%;
-}
+
 .order-table {
+	width: 98%;
     position:relative;
 }
 .line {
@@ -133,9 +144,12 @@ ul li:hover {
   table-layout:fixed;
 
 }
+.order-table td{
+	width: 33%;
+}
 
 .full-width {
- height: 120px; width: 80px; padding-right: 13px; padding-left: 10px;
+ height: 100%; width: 45%; padding-right: 13px; padding-left: 10px;
 }
 .pay-btn {
   width: 100px;
@@ -283,7 +297,7 @@ ul li:hover {
   border-radius: 20px;
   background: linear-gradient(0,#03f0fc,#fa87d2);
   position: relative;
- left: 235px;
+ left: 124%;
  top: 10px;
 }
 .delete-btn:hover{
@@ -299,4 +313,21 @@ ul li:hover {
   top: -200px;
   left: -100px;
   cursor: pointer;
+}
+.item-order{
+	position: relative;
+    left: -21%;
+    font-size: 19px;
+}
+
+
+.quantity-button{
+  border-radius: 50%;
+  background: #e5bbf1;
+  height: 23px;
+  cursor: pointer;
+}
+
+.quantity-button:hover{
+  background: #03f0fc;
 }

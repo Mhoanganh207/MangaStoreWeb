@@ -32,9 +32,5 @@ public class Book {
 	private String category;
 	@Column(name="description",length = 1000)
 	private String description;
-	
-	@ManyToMany(mappedBy = "book_list", fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<Order> order = new ArrayList<Order>();
 
 }

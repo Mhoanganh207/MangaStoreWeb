@@ -1,7 +1,12 @@
 package com.example.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import com.example.demo.Repository.ItemRepository;
+import com.example.demo.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,22 +36,16 @@ public class CartController {
 	
 	@Autowired
 	private UserService userService;
-	private OrderRepository orderRepository;
 	private BookRepository bookRepository;
 	private OrderService orderService;
+	private ItemRepository itemRepository;
 
-	
 
-	
-	
-
-	public CartController(UserService userService, OrderRepository orderRepository, BookRepository bookRepository,
-			OrderService orderService) {
-		super();
+	public CartController(UserService userService, BookRepository bookRepository, OrderService orderService, ItemRepository itemRepository) {
 		this.userService = userService;
-		this.orderRepository = orderRepository;
 		this.bookRepository = bookRepository;
 		this.orderService = orderService;
+		this.itemRepository = itemRepository;
 	}
 
 	@GetMapping("/book/{id}")
@@ -56,55 +55,110 @@ public class CartController {
 	}
 	
 	@PostMapping("/book/id")
-	public void postId(@RequestBody Book book,Model model){
+	public void postId(@RequestBody Book book){
 		orderService.Add(book.getId());
+		System.out.println(book.getId());
 		Book books = bookRepository.findById(book.getId()).get();
-		orderService.getBooklist().add(books);
+		Item item = new Item(books);
+		for(Item i: orderService.getBooklist()){
+			if(i.getProductId()==book.getId()){
+				i.setQuantity(i.getQuantity()+1);
+				return;
+			}
+		}
+		item.setQuantity(1);
+		orderService.getBooklist().add(item);
+
 	}
 	
 	@GetMapping("/booklist")
-	public ResponseEntity<List<Integer>> getBookbyID(){
-		return new ResponseEntity<List<Integer>>(orderService.getOrderList(), HttpStatus.OK);
+	public ResponseEntity<Set<Integer>> getBookbyID(){
+		return new ResponseEntity<Set<Integer>>(orderService.getOrderList(), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/book/{id}")
 	public void DeleteId(@PathVariable String id) {
 		orderService.Delete(id);
-		orderService.getBooklist().get(Integer.parseInt(id)).setId(-1);
-		for(int i:orderService.getOrderList()) {
-			if(i != -1) {
-				return;
-			}
+		if(orderService.getOrderList().isEmpty()) {
+			orderService.Clear();
 		}
-		orderService.Clear();
+
+		System.out.println("deleted");
 	}
 	
 	
 	@GetMapping("/cartlist")
-	public ResponseEntity<List<Book>> getBookList(){
-		return new ResponseEntity<List<Book>>(orderService.getBooklist(), HttpStatus.OK);
+	public ResponseEntity<Set<Item>> getBookList(){
+		return new ResponseEntity<Set<Item>>(orderService.getBooklist(), HttpStatus.OK);
 	}
 	
 	
 	@RequestMapping( value ="/payment", method = RequestMethod.POST)
 	public RedirectView  PostOrder(@RequestParam String username, @RequestParam String address, @RequestParam  String phonenumber) {
 		double totalprice =0;
-		orderService.getBooklist().removeIf(book -> book.getId()==-1);
-		for(Book book : orderService.getBooklist()) {
-			totalprice += book.getPrice();
+		for(Item item : orderService.getBooklist()) {
+			totalprice += item.getPrice();
 		}
 		Order order = new Order();
 		order.setAddress(address);
-		order.setBook_list(orderService.getBooklist());
 		order.setTotalprice(totalprice);
 		order.setPhonenumber(phonenumber);
 		order.setUser(userService.getId(username));
+		orderService.getBooklist().forEach(item ->{
+			order.getItems().add(item);
+			item.setOrder(order);
+		});
 		
-		orderRepository.save(order);
+		orderService.Save(order);
 		
 		orderService.Clear();
 		
 		return new RedirectView("/payment");
+	}
+
+	@GetMapping("/item/add/{id}")
+	public ResponseEntity<Map<Integer,Double>> AddQuantity(@PathVariable String id){
+		int index = Integer.parseInt(id);
+		int quantity = 0;
+		double price = 0;
+		for(Item item : orderService.getBooklist()){
+			if(item.getProductId()==index){
+				item.setQuantity(item.getQuantity()+1);
+				quantity = item.getQuantity();
+				price = item.getPrice();
+				break;
+			}
+		}
+
+		Map<Integer,Double>  map = new HashMap<>();
+		map.put(quantity,price);
+
+		return new ResponseEntity<Map<Integer,Double>>(map, HttpStatus.OK);
+
+	}
+
+	@GetMapping("/item/remove/{id}")
+	public ResponseEntity<Map<Integer,Double>> removeQuantity(@PathVariable String id){
+		int quantity=0;
+		int index = Integer.parseInt(id);
+		double price = 0;
+		for(Item item : orderService.getBooklist()){
+			if(item.getProductId()==index){
+				item.setQuantity(item.getQuantity()-1);
+				quantity=item.getQuantity();
+				price = item.getPrice();
+				if(quantity==0){
+					orderService.getBooklist().remove(item);
+				}
+				break;
+			}
+		}
+
+		Map<Integer,Double>  map = new HashMap<>();
+		map.put(quantity,price);
+
+		return new ResponseEntity<Map<Integer,Double>>(map, HttpStatus.OK);
+
 	}
 	
 	

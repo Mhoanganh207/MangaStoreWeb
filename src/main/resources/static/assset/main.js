@@ -1,3 +1,4 @@
+let orderList =[];
 
 
 function PostId(id) {
@@ -20,27 +21,28 @@ function PostId(id) {
 
 
 
-function AddCart(event, id) {
-
-
+function AddCart(event,id) {
 	var bookurl = 'http://localhost:8080/book/';
-	bookurl = bookurl + id
-
-
+	bookurl = bookurl + id;
+	if(orderList.some(item => item===id)){
+		console.log("duplicate");
+		return;
+	}
+	orderList.push(id);
 	$.ajax({
 		type: "Get",
 		url: "http://localhost:8080/booklist",
 		success: function(list) {
-			var length = Object.keys(list).length;
 
 			$.ajax({
 				type: "Get",
 				url: bookurl,
 				success: function(data) {
+					window.sessionStorage.setItem(id,JSON.stringify(data));
 					document.getElementById("cart").classList.remove("cartlist-empty");
 					var addhtml = '';
 					addhtml +=
-						'<div class="cartlist-item" id="' + length + '">' +
+						'<div class="cartlist-item" id="' + data.id + '">' +
 						'<div>' +
 						'<img class="cartlist-item-image" src="' + data.imageURL + '">' +
 						'</div>' +
@@ -50,7 +52,7 @@ function AddCart(event, id) {
 						'<h3>' + data.author + '</h3>' +
 						'<h2 style="color:#3f9acd">$' + data.price + ' </h2>' +
 						'</div>'
-						+ '<button style="height: 17px; z-index:1"; onclick="removeCart(' + length + ')"> Delete</button>' +
+						+ '<button style="height: 17px; z-index:1"; onclick="removeCart(' + data.id + ')"> Delete</button>' +
 						'</div>';
 
 					$("#list-item").prepend(addhtml);
@@ -68,32 +70,29 @@ function AddCart(event, id) {
 
 function AddCartList() {
 
+
+	document.getElementById("list-item").innerHTML="";
+
 	$.ajax({
 		type: "Get",
 		url: "http://localhost:8080/booklist",
 		success: function(list) {
 
       var length = Object.keys(list).length;
-      
-      
-      if(length===0){
+      if(length===0 || Object.keys(sessionStorage).length===0){
 		  document.getElementById("cart").classList.add("cartlist-empty");
 	  }
 	  else{
 		  
 	    document.getElementById("cart").classList.remove("cartlist-empty");
           
- 
-			for (let i = 0; i < length; i++) {
-				var bookurl = 'http://localhost:8080/book/' + list[i];
-				if (list[i] !== -1) {
-					$.ajax({
-						type: "Get",
-						url: bookurl,
-						success: function(data) {
-							var addhtml = '';
+        var itemlist =Object.keys(sessionStorage);
+			for (let i = 0; i < itemlist.length; i++) {
+				let data = window.sessionStorage.getItem(itemlist[i]);
+				data = JSON.parse(data);
+				var addhtml = '';
 							addhtml +=
-								'<div class="cartlist-item" id="' + i + '">' +
+								'<div class="cartlist-item" id="' + data.id + '">' +
 								'<div>' +
 								'<img class="cartlist-item-image" src="' + data.imageURL + '">' +
 								'</div>' +
@@ -103,31 +102,26 @@ function AddCartList() {
 								'<h3>' + data.author + '</h3>' +
 								'<h2 style="color:#3f9acd">$' + data.price + ' </h2>' +
 								'</div>'
-								+ '<button style="height: 17px;z-index:1"; onclick="removeCart(' + i + ')"> Delete</button>' +
+								+ '<button style="height: 17px;z-index:1"; onclick="removeCart(' + data.id + ')"> Delete</button>' +
 								'</div>';
 
-							$("#list-item").prepend(addhtml);
-							
-
-						}
-					})
-				}
-
-			}
+							$("#list-item").prepend(addhtml);					
 			}
 		}
+	}
 	})
 
 }
 
 function removeCart(id) {
 	id = '' + id;
+	window.sessionStorage.removeItem(id);
 	var parent = document.getElementById("list-item");
 	var child = document.getElementById(id);
 	parent.removeChild(child);
 	var bookurl = "http://localhost:8080/book/" + id;
 	$.ajax({
-		type: "delete",
+		type: "DELETE",
 		url: bookurl,
 		success: function() {
 			console.log("delete successed");
@@ -159,30 +153,37 @@ function AddCheckOutCart() {
 		success: function(list) {
 			
 	if(Object.keys(list).length !==0){
-		  var totalprice =0 ;
-			for (let i = 0; i < Object.keys(list).length; i++) {
+		let totalprice = 0;
+		for (let i = 0; i < Object.keys(list).length; i++) {
 				if (list[i].id !== -1) {
 					data=list[i];
-					totalprice+= parseFloat(data.price)
+					let price = parseFloat(list[i].price) * parseFloat(list[i].quantity);
+					totalprice+= price;
 					var addhtml = '';
 							addhtml +=
-								'<div id="' + i + '">' +
+								'<div id="' + data.productId + '">' +
 								'<table class="order-table">' +
 								'<tbody>' +
 
 								'<tr>' +
 								'<td><img src="' + data.imageURL + '" class="full-width"></img>' +
 								'</td>' +
-								'<td>' +
-								'<button class="delete-btn" onclick="removeCheckOutCart(' + i + ')"> Delete</button>' +
+								'<td class="item-order">' +
+								'<button class="delete-btn" onclick="removeCheckOutCart(' + data.productId + ')"> Delete</button>' +
 								'<br> <div class="thin" style="width : 230px">' + data.name + '</div>' +
-								'<br>' + data.category + '<br> <span class="thin small"> By' + data.author + '<br><br></span>' +
-								'</td>' +
+								'<br>' + data.category + '<br> <span style="font-size: 15px"> By ' + data.author +
+								`<div style="display: flex; margin-top: 7px">
+                                <span class="material-icons quantity-button" onclick="plus(`+data.productId+`)">add</span>
+                                <div class="quantity" style="margin-right: 10px;margin-left: 10px;">`+ data.quantity +`</div>
+                                <span class="material-icons quantity-button" onclick="minus(`+data.productId +`)">remove</span>
+                                </div>`
+								+`</span>`
+								+'</td>' +
 
 								' </tr>' +
 
 								'<td>' +
-								'<div class="price">$' + data.price + '</div>' +
+								'<div class="price">$' + price + '</div>' +
 								'</td>' +
 								'</tr>' +
 								'</tbody>' +
@@ -217,35 +218,92 @@ function removeCheckOutCart(id) {
 	var parent = document.getElementById("checkoutCart");
 	var child = document.getElementById(id);
 	parent.removeChild(child);
-	
-  setTimeout( function(){
-	$.ajax({
-		type: "Get",
-		url: "http://localhost:8080/cartlist",
-		success: function(list) {
-			
-	if(Object.keys(list).length !==0){
-		  var totalprice =0 ;
-			for (let i = 0; i < Object.keys(list).length; i++) {
-				if (list[i].id !== -1) {
-					totalprice+= parseFloat(list[i].price);
-				}
 
-			}
-			console.log(totalprice);
-			document.getElementById("totalprice").textContent='$'+totalprice;
-			
+
+	UpdateCart();
+
+
+
+
+}
+
+function UpdateCart(){
+	setTimeout( function(){
+			$.ajax({
+				type: "Get",
+				url: "http://localhost:8080/cartlist",
+				success: function(list) {
+
+					if(Object.keys(list).length !==0){
+						var totalprice =0 ;
+						for (let i = 0; i < Object.keys(list).length; i++) {
+							totalprice+= parseFloat(list[i].price) * parseFloat(list[i].quantity);
+						}
+						console.log(totalprice);
+						document.getElementById("totalprice").textContent='$'+totalprice;
+
+					}
+					else{
+						document.getElementById("totalprice").textContent='$'+0;
+					}
+
+				}
+			})
+		}, 20
+	)
+}
+
+function plus(id){
+	const url = 'http://localhost:8080/item/add/'+id;
+
+
+	$.ajax({
+		type:"GET",
+		url: url,
+		success: function (data) {
+			const quantity = Object.keys(data)[0];
+			const price = Object.values(data)[0];
+			document.getElementById(id).getElementsByClassName("quantity")[0].innerHTML=" "+quantity+" ";
+			document.getElementById(id).getElementsByClassName("price")[0].innerHTML= "$ " + price*quantity;
+
+			UpdateCart();
+
 		}
-	else{
-		document.getElementById("totalprice").textContent='$'+0;
-	}
-	
 		}
-	})
-	}, 20
+
 	)
 
+}
 
+
+function minus(id){
+	const url = 'http://localhost:8080/item/remove/'+id;
+
+	$.ajax({
+			type:"GET",
+			url: url,
+			success: function (data) {
+				const quantity = Object.keys(data)[0];
+				const price = Object.values(data)[0];
+				document.getElementById(id).getElementsByClassName("quantity")[0].innerHTML=" "+quantity+" ";
+				document.getElementById(id).getElementsByClassName("price")[0].innerHTML= "$ " + price*quantity;
+
+
+				console.log(quantity);
+
+
+				if(quantity === '0'){
+					window.sessionStorage.removeItem(id);
+					document.getElementById(id).remove();
+
+				}
+
+				UpdateCart();
+
+			}
+		}
+
+	)
 
 }
 

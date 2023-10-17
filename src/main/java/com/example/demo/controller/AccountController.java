@@ -40,7 +40,6 @@ public class AccountController {
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String SignUpPage(Model model) {
 		model.addAttribute("alertflag", flag);
-
 		return "signup";
 	}
 

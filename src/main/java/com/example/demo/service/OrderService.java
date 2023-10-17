@@ -1,11 +1,14 @@
 package com.example.demo.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
+import java.util.Set;
+
+import com.example.demo.Repository.OrderRepository;
+import com.example.demo.model.Item;
+import com.example.demo.model.Order;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.demo.model.Book;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,9 +19,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Service
 public class OrderService {
-	
-	private List<Integer> orderList = new ArrayList<Integer>();
-	private List<Book> booklist = new ArrayList<Book>();
+	@Autowired
+	private OrderRepository orderRepository;
+	private Set<Integer> orderList = new HashSet<Integer>();
+	private Set<Item> booklist = new HashSet<>();
+
+
 	
 	
 	public void Add(int id) {
@@ -26,12 +32,18 @@ public class OrderService {
 	}
 	
 	public void Delete(String id) {
-		orderList.set(Integer.parseInt(id), -1);
+		this.orderList.removeIf(integer -> integer==Integer.parseInt(id));
+		this.booklist.removeIf(item -> item.getProductId()==Integer.parseInt(id));
 		
 	}
 	public void Clear() {
 		this.orderList.clear();
 		this.booklist.clear();
+	}
+
+	public void Save(Order order){
+		this.orderRepository.save(order);
+
 	}
 
 }
