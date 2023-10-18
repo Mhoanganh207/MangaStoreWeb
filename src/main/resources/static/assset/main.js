@@ -158,6 +158,7 @@ function AddCheckOutCart() {
 				if (list[i].id !== -1) {
 					data=list[i];
 					let price = parseFloat(list[i].price) * parseFloat(list[i].quantity);
+					price = price.toFixed(2);
 					totalprice+= price;
 					var addhtml = '';
 							addhtml +=
@@ -198,7 +199,7 @@ function AddCheckOutCart() {
 
 			}
 			console.log(totalprice);
-			document.getElementById("totalprice").textContent='$'+totalprice;
+			document.getElementById("totalprice").textContent='$'+totalprice.toFixed(2);
 			
 		}
 		}
@@ -208,6 +209,7 @@ function AddCheckOutCart() {
 function removeCheckOutCart(id) {
 	id = '' + id;
 	var bookurl = "http://localhost:8080/book/" + id;
+	window.sessionStorage.removeItem(id);
 	$.ajax({
 		type: "delete",
 		url: bookurl,
@@ -240,7 +242,7 @@ function UpdateCart(){
 							totalprice+= parseFloat(list[i].price) * parseFloat(list[i].quantity);
 						}
 						console.log(totalprice);
-						document.getElementById("totalprice").textContent='$'+totalprice;
+						document.getElementById("totalprice").textContent='$'+totalprice.toFixed(2);
 
 					}
 					else{
@@ -308,5 +310,6 @@ function minus(id){
 }
 
 function checkout(){
+	window.sessionStorage.clear();
 	alert("Thank You")
 }

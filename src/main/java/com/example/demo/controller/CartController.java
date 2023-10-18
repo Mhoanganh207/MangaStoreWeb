@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,7 +9,6 @@ import com.example.demo.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +22,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.Repository.BookRepository;
-import com.example.demo.Repository.OrderRepository;
 import com.example.demo.model.Book;
 import com.example.demo.model.Order;
 import com.example.demo.service.OrderService;
