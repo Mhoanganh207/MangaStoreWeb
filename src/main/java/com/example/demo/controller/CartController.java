@@ -3,8 +3,6 @@ package com.example.demo.controller;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import com.example.demo.Repository.ItemRepository;
 import com.example.demo.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.view.RedirectView;
-
 import com.example.demo.Repository.BookRepository;
 import com.example.demo.model.Book;
 import com.example.demo.model.Order;
@@ -28,7 +24,6 @@ import com.example.demo.service.OrderService;
 import com.example.demo.service.UserService;
 
 @RestController
-@SessionAttributes({})
 public class CartController {
 	
 	@Autowired
