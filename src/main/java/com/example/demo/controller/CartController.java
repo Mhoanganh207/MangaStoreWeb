@@ -84,28 +84,7 @@ public class CartController {
 	}
 	
 	
-	@RequestMapping( value ="/payment", method = RequestMethod.POST)
-	public RedirectView  PostOrder(@RequestParam String username, @RequestParam String address, @RequestParam  String phonenumber) {
-		double totalprice =0;
-		for(Item item : orderService.getBooklist()) {
-			totalprice += item.getPrice();
-		}
-		Order order = new Order();
-		order.setAddress(address);
-		order.setTotalprice(totalprice);
-		order.setPhonenumber(phonenumber);
-		order.setUser(userService.getId(username));
-		orderService.getBooklist().forEach(item ->{
-			order.getItems().add(item);
-			item.setOrder(order);
-		});
-		
-		orderService.Save(order);
-		
-		orderService.Clear();
-		
-		return new RedirectView("/payment");
-	}
+
 
 	@GetMapping("/item/add/{id}")
 	public ResponseEntity<Map<Integer,Double>> AddQuantity(@PathVariable String id){
