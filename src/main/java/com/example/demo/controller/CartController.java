@@ -35,14 +35,13 @@ public class CartController {
 	private UserService userService;
 	private BookRepository bookRepository;
 	private OrderService orderService;
-	private ItemRepository itemRepository;
 
 
-	public CartController(UserService userService, BookRepository bookRepository, OrderService orderService, ItemRepository itemRepository) {
+	public CartController(UserService userService, BookRepository bookRepository, OrderService orderService) {
 		this.userService = userService;
 		this.bookRepository = bookRepository;
 		this.orderService = orderService;
-		this.itemRepository = itemRepository;
+
 	}
 
 	@GetMapping("/book/{id}")
