@@ -1,0 +1,83 @@
+<div th:fragment = "header" class="grid">
+    <nav class="header-navbar">
+        <ul class=" navbar-list">
+            <li class="navbar-item navbar-item-one">Connect with me
+                <a href="https://www.facebook.com/profile.php?id=100010078389299" class="facebook-link">
+                    <img src="../assset/icon/facebook.svg" class="image">
+                </a>
+                <a href="https://github.com/Mhoanganh207" class="facebook-link">
+                    <img src="../assset/icon/square-github.svg" class="image">
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-list">
+            <li class="navbar-item">
+                <a href="" class="navbar-link">Help
+                    <img src="../assset/icon/question-solid.svg" class="image">
+                </a>
+            </li>
+            <li class="navbar-item">
+                <a href="" class="navbar-link">Notification
+                    <img src="../assset/icon/bell-regular.svg" class="image">
+                </a>
+            </li>
+            </li>
+
+            <li class="navbar-item navbar-separate" id="account-item">
+                <a href="/signup" class="navbar-link">Sign up</a>
+
+            </li>
+            <li class="navbar-item" id="account-item1">
+                <a href="/signin" class="navbar-link">Sign in</a>
+            </li>
+
+            <li class="navbar-item hide" id="account-item2">
+                <a href="/sublogout" class="navbar-link">Log out</a>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="top-container">
+        <!--Logo-->
+        <div class="logo">
+
+            <a href="http://localhost:8080/" class="logo-link">
+                <img class="logo-img logo-image"
+                     src="../assset/img/manga-store-low-resolution-logo-color-on-transparent-background (3).png"
+                     alt="">
+            </a>
+
+        </div>
+        <!--Search Bar-->
+        <div class=" header-search">
+
+            <input type="text" class="search-bar" placeholder="Search :v">
+            <button class="search-button">
+                <img src="../assset/icon/magnifying-glass-solid.svg" class="image1 search-icon ">
+            </button>
+
+        </div>
+        <!--Cart-->
+        <div class="header-cart">
+            <a href="/payment">
+                <img src="../assset/icon/cart-shopping-solid.svg" class="image2 filter-white cart-icon">
+            </a>
+            <!-- cartlist-empty -->
+            <div class="cartlist cartlist-empty" id="cart">
+                <img src="../assset/img/shopping-cart (1).png" alt="" class="emptycart-icon">
+                <span class="cartlist-empty-msg">
+							There is nothing here
+						</span>
+                <div class="item-list" id="list-item">
+
+                </div>
+
+            </div>
+        </div>
+        <div class="header-user">
+            <img src="../assset/icon/user-solid.svg" class="image2 filter-white">
+        </div>
+
+    </div>
+</div>

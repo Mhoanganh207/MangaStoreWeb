@@ -17,7 +17,7 @@ function PostId(id) {
 			}
 		})
 	}, 50)
-};
+}
 
 
 
@@ -159,7 +159,7 @@ function AddCheckOutCart() {
 					data=list[i];
 					let price = parseFloat(list[i].price) * parseFloat(list[i].quantity);
 					price = price.toFixed(2);
-					totalprice+= price;
+					totalprice = totalprice + parseFloat(price);
 					var addhtml = '';
 							addhtml +=
 								'<div id="' + data.productId + '">' +
@@ -198,8 +198,7 @@ function AddCheckOutCart() {
 				}
 
 			}
-			console.log(totalprice);
-			document.getElementById("totalprice").textContent='$'+totalprice.toFixed(2);
+		document.getElementById("totalprice").textContent='$'+totalprice;
 			
 		}
 		}
@@ -309,7 +308,14 @@ function minus(id){
 
 }
 
-function checkout(){
+function checkOut(){
+	let username = document.forms["checkout"]["username"].value;
+	let address = document.forms["checkout"]["address"].value;
+	let phonenumber = document.forms["checkout"]["phonenumber"].value;
+	if(username === "" || address === "" || phonenumber === ""){
+		return;
+	}
 	window.sessionStorage.clear();
-	alert("Thank You")
+	alert("Thank you for your purchase!");
+
 }

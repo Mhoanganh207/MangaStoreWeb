@@ -17,25 +17,15 @@ h2 {
 .container {
   height:100%;
   -webkit-box-pack:center;
-  -webkit-justify-content:center;
       -ms-flex-pack:center;
           justify-content:center;
   -webkit-box-align:center;
   -webkit-align-items:center;
       -ms-flex-align:center;
           align-items:center;
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:-ms-flexbox;
   display:flex;
   background:-webkit-linear-gradient(#c5e5e5, #ccddf9);
   background:linear-gradient(#c9e5e9,#ccddf9);
-}
-.dropdown-select.visible {
-  display:block;
-}
-.dropdown {
-  position:relative;
 }
 ul {
   margin:0;
@@ -183,40 +173,26 @@ ul li:hover {
   right:27px;
   left:35px;
 }
-.dense {
-  line-height:1.2em;
-  font-size:16px;
-  font-size:1rem;
-}
+
 .input-field {
   background:rgba(255,255,255,0.1);
-  margin-bottom:10px;
-  margin-top:3px;
   line-height:1.5em;
   font-size:20px;
-  font-size:1.3rem;
   border:none;
   padding:5px 10px 5px 10px;
   color:#fff;
   box-sizing:border-box;
   width:100%;
-  margin-left:auto;
-  margin-right:auto;
+  margin: 3px auto 10px;
 }
 .credit-info {
   background: linear-gradient(0,#fa87d2,#03f0fc);
   height:100%;
   width:50%;
   color:#eee;
-  -webkit-box-pack:center;
-  -webkit-justify-content:center;
-      -ms-flex-pack:center;
-          justify-content:center;
+
   font-size:14px;
-  font-size:.9rem;
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:-ms-flexbox;
+
   display:flex;
   box-sizing:border-box;
   padding-left:25px;
@@ -225,37 +201,11 @@ ul li:hover {
   border-bottom-right-radius:30px;
   position:relative;
 }
-.dropdown-btn {
-  background:rgba(255,255,255,0.1);
-  width:100%;
-  border-radius:5px;
-  text-align:center;
-  line-height:1.5em;
-  cursor:pointer;
-  position:relative;
-  -webkit-transition:background .2s ease;
-          transition:background .2s ease;
-}
-.dropdown-btn:after {
-  content: '\25BE';
-  right:8px;
-  position:absolute;
-}
-.dropdown-btn:hover {
-  background:rgba(255,255,255,0.2);
-  -webkit-transition:background .2s ease;
-          transition:background .2s ease;
-}
-.dropdown-select {
-  display:none;
-}
+
 .credit-card-image {
   display:block;
   max-height:80px;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:35px;
-  margin-bottom:15px;
+  margin: 35px auto 15px;
 }
 .credit-info-content {
   margin-top:25px;

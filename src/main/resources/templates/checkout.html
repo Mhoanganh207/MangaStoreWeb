@@ -46,19 +46,25 @@
 					</div>
 				</div>
 				<div class='credit-info'>
-					<form class='credit-info-content' method="post">
+					<form class='credit-info-content' method="post" name="checkout">
 
 						<img src='./assset/icon/shonenjumplogo.png'
 							style="height: 240px; width: 220px; padding-left: 37%;"></img>
 						Your Username
 
-						<input class='input-field' name="username"></input>
+						<label>
+							<input class='input-field' name="username" required>
+						</label>
 						Address
-						<input class='input-field' name="address"></input>
+						<label>
+							<input class='input-field' name="address" required>
+						</label>
 						Phone Number
-						<input class='input-field' name="phonenumber"></input>
+						<label>
+							<input class='input-field' name="phonenumber" required>
+						</label>
 
-						<button class="pay-btn" onclick="checkout()">Checkout</button>
+						<button class="pay-btn" onclick="checkOut()">Checkout</button>
 
 					</form>
 

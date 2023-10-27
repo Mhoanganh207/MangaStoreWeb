@@ -12,28 +12,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.view.RedirectView;
 import com.example.demo.Repository.BookRepository;
 import com.example.demo.model.Book;
-import com.example.demo.model.Order;
 import com.example.demo.service.OrderService;
-import com.example.demo.service.UserService;
 
 @RestController
 public class CartController {
 	
 	@Autowired
-	private UserService userService;
 	private BookRepository bookRepository;
 	private OrderService orderService;
 
 
-	public CartController(UserService userService, BookRepository bookRepository, OrderService orderService) {
-		this.userService = userService;
+	public CartController(BookRepository bookRepository, OrderService orderService) {
 		this.bookRepository = bookRepository;
 		this.orderService = orderService;
 
