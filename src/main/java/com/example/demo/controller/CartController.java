@@ -40,7 +40,6 @@ public class CartController {
 	@PostMapping("/book/id")
 	public void postId(@RequestBody Book book){
 		orderService.Add(book.getId());
-		System.out.println(book.getId());
 		Book books = bookRepository.findById(book.getId()).get();
 		Item item = new Item(books);
 		for(Item i: orderService.getBooklist()){
