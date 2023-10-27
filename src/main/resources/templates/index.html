@@ -40,21 +40,20 @@
 
 				<div class="product-items">
 					<!-- single product -->
-					<div class="product">
+					<div class="product" th:each="book : ${booklist}">
 						<div class="product-content">
 							<div class="product-img">
-								<a href="item/1">
+								<a th:href="'/item/'+ ${book.id}">
 									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/197473689X.jpg"
-										alt="product image">
+										th:src="@{${book.imageURL}}" alt="product image">
 								</a>
 							</div>
 							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'1');PostId('1');"> add to
+								<button type="button" class="btn-cart" th:onclick="AddCart(event,[[${book.id}]]);PostId([[${book.id}]]);"> add to
 									cart
 									<span><i class="fas fa-plus"></i></span>
 								</button>
-								<button type="button" class="btn-buy" onclick="buynow('1')"> buy now
+								<button type="button" class="btn-buy" th:onclick="buynow([[${book.id}]])"> buy now
 									<span><i class="fas fa-shopping-cart"></i></span>
 								</button>
 							</div>
@@ -62,406 +61,23 @@
 
 						<div class="product-info">
 							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Hitsuji Gondaira</h2>
+								<h2 class="sm-title" th:text="${book.category}"></h2>
+								<h2 class="sm-title" th:text="${book.author}"></h2>
 
 							</div>
-							<a href="#" class="product-name">Mission Yozakura Family vol.6</a>
-							<p class="product-price">$ 8.00</p>
-							<p class="product-price">$ 6.00</p>
+							<a href="#" class="product-name" th:text="${book.name}"></a>
+							<p class="product-price" th:text="'$ ' + ${book.preprice}"></p>
+							<p class="product-price" th:text="'$ ' + ${book.price}"></p>
 						</div>
 
-						<div class="off-info">
-							<h2 class="sm-title">25% off</h2>
-						</div>
 					</div>
 
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="item/2">
-									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/1974738752.jpg"
-										alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'2');PostId('2');"> add to
-									cart
-									<span><i class="fas fa-plus"></i></span>
-
-
-									<button type="button" class="btn-buy" onclick="buynow('2')"> buy now
-										<span><i class="fas fa-shopping-cart"></i></span>
-									</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Seinen, Romance</h2>
-								<h2 class="sm-title">By Aka Akasaka</h2>
-
-							</div>
-							<a href="#" class="product-name">Kaguya-sama Love is war vol.26</a>
-							<p class="product-price">$ 10.00</p>
-							<p class="product-price">$ 9.00</p>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="item/3">
-									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/1974738701.jpg"
-										alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'3');PostId('3');"> add to
-									cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('3')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Oda Eiichiro</h2>
-
-							</div>
-							<a href="#" class="product-name">One piece vol.103</a>
-							<p class="product-price">$ 8.00</p>
-							<p class="product-price">$ 7.20</p>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="item/4">
-									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/1974737446.jpg"
-										alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'4');PostId('4');"> add to
-									cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('4')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Comedy</h2>
-								<h2 class="sm-title">By Yukinobu Tatsu</h2>
-
-							</div>
-							<a href="#" class="product-name">Dandadan vol.4</a>
-							<p class="product-price">$ 10.00</p>
-							<p class="product-price">$ 7.50</p>
-						</div>
-
-						<div class="off-info">
-							<h2 class="sm-title">25% off</h2>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="item/5">
-									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/1974724174.jpg"
-										alt="product image">
-								</a>
-
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'5'); PostId('5');"> add
-									to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('5')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Hirohiko Araki</h2>
-
-							</div>
-							<a href="#" class="product-name">JoJo’s Bizarre Adventure: Part 5--Golden Wind, Vol. 9</a>
-							<p class="product-price">$ 18.00</p>
-							<p class="product-price">$ 16.33</p>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="item/6">
-									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/1421596024.jpg"
-										alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'6'); PostId('6');">
-									add to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('6')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action,
-									Adventure</h2>
-								<h2 class="sm-title">By Tite Kubo</h2>
-
-							</div>
-							<a href="#" class="product-name">Bleach Vol.73</a>
-							<p class="product-price">$ 10.00</p>
-							<p class="product-price">$ 9.00</p>
-						</div>
-						<div class="off-info">
-							<h2 class="sm-title">Final Volume</h2>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="item/7">
-									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/142150636X.jpg"
-										alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'7'); PostId('7');"> add
-									to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('7')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Akira Toriyama</h2>
-
-							</div>
-							<a href="#" class="product-name">Dragon Ball Vol.26</a>
-							<p class="product-price">$ 9.00</p>
-							<p class="product-price">$ 8.00</p>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="item/8">
-									<img class="img-product"
-										src="https://dw9to29mmj727.cloudfront.net/products/1421582848.jpg"
-										alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'8'); PostId('8');"> add
-									to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('8')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Masashi Kishimoto</h2>
-
-							</div>
-							<a href="#" class="product-name">Naruto Vol.72</a>
-							<p class="product-price">$ 10.00</p>
-							<p class="product-price">$ 6.50</p>
-						</div>
-
-						<div class="off-info">
-							<h2 class="sm-title">35% off</h2>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-							  <a href="/item/9">
-								<img class="img-product"
-									src="https://dw9to29mmj727.cloudfront.net/products/1421530686.jpg"
-									alt="product image">
-							  </a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'9'); PostId('9')" ;> add
-									to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('9')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Yoshihiro Togashi</h2>
-
-							</div>
-							<a href="#" class="product-name">Hunter x Hunter Vol.26</a>
-							<p class="product-price">$ 10.00</p>
-							<p class="product-price">$ 7.98</p>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="/item/10">
-								<img class="img-product"
-									src="https://dw9to29mmj727.cloudfront.net/products/1974739090.jpg"
-									alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'10'); PostId('10');"> add to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('10')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Kohei Horikoshi</h2>
-
-							</div>
-							<a href="#" class="product-name">My Hero Academia Vol.35</a>
-							<p class="product-price">$ 9.00</p>
-							<p class="product-price">$ 8.00</p>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="/item/11">
-								<img class="img-product"
-									src="https://dw9to29mmj727.cloudfront.net/products/1974738965.jpg"
-									alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'11'); PostId('11');"> add to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('11')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Shonen, Action</h2>
-								<h2 class="sm-title">By Yuto Suzuki</h2>
-
-							</div>
-							<a href="#" class="product-name">Sakamoto Days Vol.9</a>
-							<p class="product-price">$ 10.00</p>
-							<p class="product-price">$ 9.00</p>
-						</div>
-					</div>
-					<!-- end of single product -->
-					<!-- single product -->
-					<div class="product">
-						<div class="product-content">
-							<div class="product-img">
-								<a href="/item/12">
-								<img class="img-product"
-									src="https://dw9to29mmj727.cloudfront.net/products/142158171X.jpg"
-									alt="product image">
-								</a>
-							</div>
-							<div class="product-btns">
-								<button type="button" class="btn-cart" onclick="AddCart(event,'12'); PostId('12');"> add to cart
-									<span><i class="fas fa-plus"></i></span>
-								</button>
-								<button type="button" class="btn-buy" onclick="buynow('12')"> buy now
-									<span><i class="fas fa-shopping-cart"></i></span>
-								</button>
-							</div>
-						</div>
-
-						<div class="product-info">
-							<div class="product-info-top">
-								<h2 class="sm-title">Seinen, Action</h2>
-								<h2 class="sm-title">By Norihiro Nagi</h2>
-
-							</div>
-							<a href="#" class="product-name">Claymore Vol.27</a>
-							<p class="product-price">$ 9.99</p>
-							<p class="product-price">$ 8.30</p>
-							<div class="off-info">
-								<h2 class="sm-title">Final Volume</h2>
-							</div>
-						</div>
-					</div>
 					<!-- end of single product -->
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
 
-
-	</div>
 </body>
 
 <script>

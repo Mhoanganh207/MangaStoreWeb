@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
@@ -22,11 +23,13 @@ public class BookController {
 		super();
 		this.bookRepository = bookRepository;
 	}
-	@RequestMapping("/index")
-	public String itempage() {
-		
+	@RequestMapping("/")
+	public String itempage(Model model) {
+		Iterable<Book> booklist = bookRepository.findAll();
+		model.addAttribute("booklist", booklist);
 		return "/index";
 	}
+
 	@RequestMapping("/item/{id}")
 	public String testpage(Model model, @PathVariable String id) {
 		Optional<Book> bookopt = bookRepository.findById(Integer.parseInt(id));
