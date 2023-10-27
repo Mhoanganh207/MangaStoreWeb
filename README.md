@@ -3,7 +3,7 @@ Simple Manga Store Web
 
 Nice to see you
 
-<h3 align="left">Connect with me: mhoanganh05@gmail.com</h3>
+
 <p align="left">
 </p>
 
@@ -19,5 +19,5 @@ It have these following functions:
 - Create order 
 - Check out function
 
-The frontend of this web: https://github.com/Mhoanganh207/mangastore-frontend
+
 Thank you !
